@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "title": "Expert Wix Website Redesign for Spiritual Essencee",
+        "description": "Seeking an expert Wix developer with a proven track record to completely redesign our existing website to reflect a deep spiritual essence. This project requires a developer who fully grasps Indian cultural and spiritual nuances. Applicants must showcase previous work similar in complexity and theme. Required Skills: - Extensive experience with Wix platform - Strong portfolio featuring completed Wix projects, preferably within cultural or spiritual domains - Proficiency in Velo by Wix",
+        "price": 75765,
+        "skills": ["Graphic Design", "HTML", "Graphic Design", "Wix"],
+        "duration": "6 days left"
+    },
+    {
+        "id": 2,
+        "title": "Landing Page, Dashboard and Subscription Payments Development",
+        "description": "We are looking to create a modern and professional landing page for our bot scheduling services...",
+        "price": 18180,
+        "skills": [
+            "Django",
+            "Payment Gateway Integration",
+            "PostgreSQL",
+            "Python",
+            "Web Development"
+        ],
+        "duration": "10 days left"
+    },
+    {
+        "id": 3,
+        "title": "Professional & Corporate E-commerce Landing Page Design",
+        "description": "I'm looking for a seasoned web designer with a knack for creating modern, fast-loading, and conversion-optimized landing pages. The primary goal of this landing page is to generate leads for my e-commerce business. Key Features: - Hero section - Product showcase - CTA buttons - Simple checkout flow - Testimonials - Features overview - Pricing table Design Preferences: The style of the landing page should be professional and corporate.",
+        "price": 18180,
+        "bids": 10,
+        "skills": [
+            "Graphic Design",
+            "HTML",
+            " JavaScript",
+            "Website Design",
+            "WordPress"
+        ],
+        "duration": "5 days left"
+    },
+    {
+        "id": 4,
+        "title": "Score App Landing Page Revamp",
+        "description": "I have a landing page built on Score App that needs updating. The project involves replacing 50 existing Yes/No questions with 77 new ones, changing a subheading, and adding ratings to quiz-taker responses. Key Tasks: - Remove existing questions and replace with 77 new Yes/No questions (provided). - Update the Heading/ subheading and a sentence or two on the landing page - Replace Five Key Area (words) and their present icons - Add ratings to the answers provided by quiz-takers for an evaluation, based upon Score",
+        "price": 15000,
+        "bids": 10,
+        "skills": ["Graphic Design", "HTML", "HTML5", "PHP", " Website Design"],
+        "duration": "15 days left"
+    },
+    {
+        "id": 5,
+        "title": "Backend Developer Needed for Customization",
+        "description": "I'm looking for a skilled backend developer who can help customize and add new features to my website. The job entails: - Integrating Xendit and a manual checkout process - Rearranging sections of the website - Customizing the product or service listings - Tweaking the paid appointment system - Modifying the admin dashboard The ideal candidate should have substantial experience with backend development and be able to discuss other potential features to be added. laravel The project is expected to be completed within 1",
+        "price": 18180,
+        "bids": 10,
+        "skills": [
+            "Backend Development",
+            "Database Programming",
+            " Laravel",
+            "MySQL",
+            "PHP"
+        ],
+        "duration": "9 days left"
+    }
+]

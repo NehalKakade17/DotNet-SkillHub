@@ -1,0 +1,731 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+}
+/* General Styles */
+body {
+    background-color: #565758; /* Light grey background */
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    flex: 1;
+}
+.fBtn {
+    width: 25%;
+}
+.job-details h3 {
+    color: #1772eb;
+}
+h2 {
+    color: #333; /* Dark text for headers */
+    font-weight: bold;
+}
+
+h5 {
+    color: #007bff; /* Light blue for small headers */
+}
+
+/* Navbar */
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: #fff; /* White text for links */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00bfff !important; /* Change color on hover */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    text-align: center;
+}
+
+/* Home Page */
+.home-page {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.home-page h2 {
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.home-page p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.home-page .btn {
+    background-color: #28a745;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.home-page .btn:hover {
+    background-color: #218838;
+}
+
+/* Messages Page */
+.messages-page {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.messages-page h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Message Layout - Using Flexbox */
+.message-cards-container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column; /* Stacking the messages vertically */
+    gap: 0; /* No gap between messages */
+}
+
+.message-card {
+    width: 100%; /* Full width of the parent container */
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 0; /* No space between cards */
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+}
+
+.message-card .card-body {
+    padding: 2rem;
+}
+
+.message-card .card-title {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: #007bff;
+}
+
+.message-card .card-text {
+    color: #555;
+}
+
+/* Message Card Content for Hovered Item */
+.message-card:hover .card-title {
+    color: #28a745;
+}
+
+@media (max-width: 480px) {
+    .message-card {
+        flex: 1 1 100%; /* Stack the cards in a single column on very small screens */
+        max-width: 100%;
+    }
+}
+
+/* Chat Window Styles */
+.chat-window {
+    position: fixed;
+    top: 9rem;
+    right: 1%;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-window h5 {
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.chat-window .chat-messages {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.chat-window .message {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.chat-window .message-img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.chat-window .message strong {
+    color: #007bff;
+}
+
+.chat-window .message p {
+    margin: 0;
+}
+
+.chat-window .message-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-window .message-input textarea {
+    width: 88%;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.close-chat-btn {
+    width: 10%;
+    margin-left: 90%;
+    background-color: red;
+    color: white;
+    border-radius: 1rem;
+}
+.chat-window .message-input button {
+    margin-left: 1rem;
+    padding: 1rem;
+    background-color: #28a745;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 10%;
+    flex-shrink: 0;
+}
+
+.chat-window .message-input button:hover {
+    background-color: #218838;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Chat Window Sizes for Different Screens */
+@media (max-width: 1024px) {
+    .chat-window {
+        width: 60%; /* Slightly smaller for tablets */
+        height: 50%;
+    }
+    .fBtn {
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+    .chat-window {
+        width: 80%; /* Full width for mobile screens */
+        height: 60%;
+        top: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-window {
+        width: 90%; /* Even larger for very small screens */
+        height: 65%;
+        top: 4rem;
+    }
+
+    .chat-window h5 {
+        font-size: 1rem;
+    }
+}
+
+/* Custom Card Styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Container to wrap the image */
+.freelancer-img-div {
+    max-width: 100%; /* Ensures the container is responsive */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+    padding: 10px; /* Add some spacing around the image */
+}
+
+/* Style for the image */
+.freelancer-image {
+    width: 100%; /* Make the image responsive, taking full container width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Set a maximum width for the image */
+    object-fit: cover; /* Make sure the image covers the area without distortion */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+}
+
+/* Responsive Design: For small screens (phones) */
+@media (max-width: 576px) {
+    .freelancer-img-div {
+        padding: 5px;
+    }
+
+    .freelancer-image {
+        max-width: 200px; /* Reduce max-width for smaller devices */
+    }
+}
+
+/* Responsive Design: For larger screens (desktops) */
+@media (min-width: 992px) {
+    .freelancer-img-div {
+        padding: 15px;
+    }
+
+    .freelancer-image {
+        max-width: 300px; /* Set a reasonable max-width for larger screens */
+    }
+}
+
+/* Video Call Page*/
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Title styles */
+.video-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Video styles */
+/* Container styles */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Title styles */
+.video-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Text styles */
+.video-text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+.video-stream {
+    width: 100%;
+    max-width: 640px; /* Restrict video width */
+    height: auto; /* Maintain aspect ratio */
+    background-color: black;
+    border-radius: 12px; /* Optional: rounded corners */
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.toggleBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.toggleBtn:hover {
+    background-color: #0056b3;
+    transition: all 0.3 ease-in-out;
+}
+
+/* Chat Box */
+.chat-box {
+    flex: 1 1 30%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box textarea {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+    font-size: 1rem;
+    color: #333;
+}
+
+.chat-box textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.chat-box button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-box button:hover {
+    background-color: #0056b3;
+    transition: all 0.3 ease-in-out;
+}
+
+.end-call-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.end-call-btn:hover {
+    background-color: #bd2130;
+}
+
+/* Responsive Design for mobile devices */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .chooseUs {
+        margin-top: 1rem;
+    }
+    .hero-content {
+        padding: 0 !important;
+    }
+    .row {
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer {
+        position: relative;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .freelancer-img-div {
+        padding: 8px;
+    }
+
+    .freelancer-image {
+        max-width: 250px; /* Adjust max-width for tablets */
+    }
+    .video-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .video-box,
+    .chat-box {
+        flex: 1 1 100%;
+    }
+
+    .video-box {
+        height: 250px;
+    }
+    html,
+    body {
+        -webkit-overflow-scrolling: touch; /* For iOS */
+        overflow-y: scroll; /* For Android */
+        scrollbar-width: none; /* For Firefox */
+        -ms-overflow-style: none; /* For Internet Explorer */
+    }
+    .chat-window {
+        width: 70%; /* Slightly smaller for smaller tablets */
+        height: 55%;
+    }
+
+    .job-details h3 {
+        color: rgb(2, 79, 223);
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+
+    .home-page h2 {
+        font-size: 1.8rem;
+    }
+
+    .home-page p {
+        font-size: 1rem;
+    }
+
+    .home-page .btn {
+        font-size: 1.1rem;
+    }
+
+    .payment-page .btn {
+        font-size: 1rem;
+    }
+
+    .messages-page .list-group-item {
+        font-size: 0.9rem;
+    }
+
+    .freelancer-card {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        height: 45vh !important;
+    }
+
+    .fBtn {
+        width: 100%;
+    }
+    .intro-section {
+        text-overflow: clip !important;
+    }
+    /* Adjust image size */
+    .card-img {
+        height: 10vh !important;
+
+        margin: 0 !important;
+        object-fit: cover;
+    }
+
+    /* Adjust title and rate display */
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Adjust buttons to be stack vertically */
+    .d-flex.flex-row {
+        flex-direction: column;
+    }
+
+    /* Increase font size for better readability on mobile */
+    .skills {
+        font-size: 1rem;
+    }
+
+    .skill {
+        font-size: 0.9rem;
+    }
+
+    /* Adjust intro section */
+    .intro-section {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .intro-section div {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        translate: 0 !important;
+    }
+    .video-box {
+        height: 200px;
+    }
+
+    .chat-box textarea {
+        font-size: 0.9rem;
+    }
+
+    .chat-box button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+.hero-content {
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+
+    border-radius: 1rem;
+    position: absolute;
+    top: 21%;
+    text-align: center;
+}
+.cardImg {
+    border-radius: 1rem !important;
+}
+
+/* project list */
+.app-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.app-title {
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+/* Job Card */
+.job-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-details {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.job-details h3 {
+    margin: 0 0 10px 0;
+}
+
+.job-details p {
+    margin: 0 0 10px 0;
+}
+
+/* Job Actions */
+.job-actions {
+    text-align: right;
+}
+
+.job-price {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.bid-button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bid-button:hover {
+    background-color: #218838;
+    transition: all 0.3 ease-in-out;
+}
+
+/* active window nav-button*/
+.active-link {
+    font-weight: bold;
+    color: #00bfff !important; /* Light blue color */
+    text-decoration: underline;
+}
+
+.freelancer-card {
+    border: 1px solid #dddddd00;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-img {
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 0.5rem !important;
+}
+
+.skills {
+    font-size: 0.9rem;
+    color: #1772eb !important;
+    font-weight: 500;
+}
+
+.skill {
+    margin-right: 5px;
+}

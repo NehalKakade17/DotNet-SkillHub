@@ -1,0 +1,168 @@
+{/* Freelancing Courses Section */}
+            <section className="freelancing-courses py-5 bg-light">
+                <Container>
+                    <h1 className="text-center mb-4 fw-bold">
+                        Freelancing Courses
+                    </h1>
+                    <Row>
+                        {/* Web Designer Course Card */}
+                        <Col md={4}>
+                            <Card
+                                className="zoom-card"
+                                style={{
+                                    cursor: "pointer",
+                                    border: "none",
+                                }}
+                                onMouseEnter={() =>
+                                    handleMouseEnter("webDesigner")
+                                }
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <div
+                                    style={{
+                                        overflow: "hidden",
+                                        position: "relative",
+                                        height: "20rem",
+                                    }}
+                                >
+                                    <Card.Img
+                                        className="cardImg"
+                                        variant="top"
+                                        src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww"
+                                        alt="Web Designer"
+                                        style={{
+                                            objectFit: "cover",
+                                            height: "20rem",
+                                            width: "100%",
+                                            transition: "transform 0.3s ease", // Apply transition for smooth zoom effect
+                                            transform:
+                                                hoveredCard === "webDesigner"
+                                                    ? "scale(1.1)"
+                                                    : "scale(1)", // Zoom effect on hover
+                                        }}
+                                    />
+                                </div>
+                                <Card.Body>
+                                    <Card.Title>Web Designer</Card.Title>
+                                    <Card.Text>
+                                        Learn the latest techniques in web
+                                        design and create stunning websites.
+                                    </Card.Text>
+                                    <Link to="/web-design-course">
+                                        <Button variant="primary">
+                                            Discover Now
+                                        </Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        {/* Graphic Designer Course Card */}
+                        <Col md={4}>
+                            <Card
+                                className="zoom-card rounded"
+                                style={{
+                                    cursor: "pointer",
+                                    border: "none",
+                                }}
+                                onMouseEnter={() =>
+                                    handleMouseEnter("graphicDesigner")
+                                }
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <div
+                                    style={{
+                                        overflow: "hidden",
+                                        position: "relative",
+                                        borderRadius: "1rem",
+                                        height: "20rem",
+                                    }}
+                                >
+                                    <Card.Img
+                                        className="cardImg"
+                                        variant="top"
+                                        src="https://plus.unsplash.com/premium_photo-1716396589393-5ce8199c3ba1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="Graphic Designer"
+                                        style={{
+                                            objectFit: "cover",
+                                            height: "20rem",
+                                            width: "100%",
+                                            transition: "transform 0.3s ease", // Apply transition for smooth zoom effect
+                                            transform:
+                                                hoveredCard ===
+                                                "graphicDesigner"
+                                                    ? "scale(1.1)"
+                                                    : "scale(1)", // Zoom effect on hover
+                                        }}
+                                    />
+                                </div>
+                                <Card.Body>
+                                    <Card.Title>Graphic Designer</Card.Title>
+                                    <Card.Text>
+                                        Master the art of graphic design,
+                                        including logo creation, branding, and
+                                        digital design.
+                                    </Card.Text>
+                                    <Link to="/graphic-design-course">
+                                        <Button variant="primary">
+                                            Discover Now
+                                        </Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        {/* 3D Artist Course Card */}
+                        <Col md={4}>
+                            <Card
+                                className="zoom-card"
+                                style={{
+                                    cursor: "pointer",
+                                    border: "none",
+                                }}
+                                onMouseEnter={() =>
+                                    handleMouseEnter("threeDArtist")
+                                }
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <div
+                                    style={{
+                                        overflow: "hidden",
+                                        position: "relative",
+                                        height: "20rem",
+                                    }}
+                                >
+                                    <Card.Img
+                                        className="cardImg"
+                                        variant="top"
+                                        src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/298012302/original/cbde16c874888119a557a250de6c768502ced899/create-realistic-3d-art-for-you-using-midjourney-ai.png"
+                                        alt="3D Artist"
+                                        style={{
+                                            objectFit: "cover",
+                                            height: "20rem",
+                                            width: "100%",
+                                            transition: "transform 0.3s ease", // Apply transition for smooth zoom effect
+                                            transform:
+                                                hoveredCard === "threeDArtist"
+                                                    ? "scale(1.1)"
+                                                    : "scale(1)", // Zoom effect on hover
+                                        }}
+                                    />
+                                </div>
+                                <Card.Body>
+                                    <Card.Title>3D Artist</Card.Title>
+                                    <Card.Text>
+                                        Learn how to create immersive 3D models
+                                        and animations.
+                                    </Card.Text>
+                                    <Link to="/3d-artist-course">
+                                        <Button variant="primary">
+                                            Discover Now
+                                        </Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
