@@ -63,3 +63,4 @@ D:\Dotnet\SkillHub\obj\Debug\net8.0\refint\SkillHub.dll
 D:\Dotnet\SkillHub\obj\Debug\net8.0\SkillHub.pdb
 D:\Dotnet\SkillHub\obj\Debug\net8.0\SkillHub.genruntimeconfig.cache
 D:\Dotnet\SkillHub\obj\Debug\net8.0\ref\SkillHub.dll
+D:\Dotnet\SkillHub\obj\Debug\net8.0\SkillHub.sourcelink.json

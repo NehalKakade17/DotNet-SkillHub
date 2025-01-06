@@ -1,6 +1,7 @@
 // routing/Router.js
 import { Route, Routes } from "react-router-dom"; // Use Routes instead of Switch
 import HomePage from "../components/HomePage";
+import Dashboard from "../components/Dashboard";
 import PaymentPage from "../components/PaymentPage";
 import MessagesPage from "../components/MessagesPage";
 import HireFreelancers from "../components/HireFreelancers";
@@ -10,7 +11,8 @@ import ThankYouPage from "../components/ThankYouPage"; // Import ThankYouPage
 import ProfilePage from "../components/ProfilePage";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
-import { useEffect, useState } from "react";
+import ManageUsers from "../components/ManageUsers";
+import  EditUser from "../components/EditUser";
 import Navigation from "../components/Navbar";
 import Projects from "../components/Projects";
 import Freelancers from "../components/Freelancers";
@@ -23,27 +25,12 @@ import Illustration from "../components/Illustration";
 import Data from "../components/Data";
 import Cyber from "../components/Cyber";
 import CreateProject from "../components/Project";
+import PropTypes from "prop-types";
 
-const Router = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const handleLogin = () => {
-        setIsLoggedIn(true);
-        localStorage.setItem("isLoggedIn", true);
-    };
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        localStorage.removeItem("isLoggedIn");
-    };
-    useEffect(() => {
-        const loggedIn = localStorage.getItem("isLoggedIn");
-        if (loggedIn) {
-            setIsLoggedIn(true);
-        }
-    }, []);
+const Router = ({ isLoggedIn, userRole, handleLogin, handleLogout }) => {
     return (
         <>
-            {" "}
+
             <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
             <Routes>
                 {/* Define all your routes here */}
@@ -83,9 +70,19 @@ const Router = () => {
                 <Route path="/data" element={<Data />} />
                 <Route path="/cyber" element={<Cyber />} />
                 <Route path="/createProject" element={<CreateProject />} />
+                <Route path="/dashboard" element={<Dashboard userRole={userRole} />} />
+                <Route path="/admin/users" element={<ManageUsers />} />
+                <Route path="/admin/users/edit/:id" element={<EditUser />} />
+
             </Routes>
         </>
     );
+};
+Router.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,  // isLoggedIn should be a boolean
+    userRole: PropTypes.string,             // userRole should be a string (optional)
+    handleLogin: PropTypes.func.isRequired, // handleLogin should be a function
+    handleLogout: PropTypes.func.isRequired, // handleLogout should be a function
 };
 
 export default Router;

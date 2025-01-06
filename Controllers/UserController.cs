@@ -38,7 +38,7 @@ namespace SkillHub.Controllers
 
             return Ok(createdUser);
         }
-        // POST: api/user/login
+
         // POST: api/user/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginReq loginReq)
@@ -48,14 +48,85 @@ namespace SkillHub.Controllers
                 return BadRequest("Email and password are required.");
             }
 
+            // Call LoginUserAsync to validate user credentials
             var user = await _userService.LoginUserAsync(loginReq);
-
             if (user == null)
             {
                 return Unauthorized("Invalid email or password.");
             }
+            Console.WriteLine($"User login successful: {user.Email}");
+            // Check the role of the user (assuming Role is stored as an enum or string)
+            string role = user.Role.ToString();  // "Admin" or "User"
 
-            return Ok(user);  // Return the user or any data you want
+            // Return the user details along with their role
+            var response = new
+            {
+                UserId = user.Id,
+                Email = user.Email,
+                Role = role,  // Return the role as a string (Admin or User)
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return Ok(response); // Return the user data
+        }
+        // GET: api/users
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await _userService.GetAllUsersAsync();
+            if (users == null || users.Count == 0)
+            {
+                return NotFound("No users found.");
+            }
+            return Ok(users); // This will return the list of users
+        }
+
+        // DELETE: api/users
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            try
+            {
+                await _userService.DeleteUserAsync(id); // Call the service method to delete the user
+                return Ok(new { message = "User deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message }); // Return a NotFound if user is not found
+            }
+
+
+        }
+        // GET: api/User/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+            return Ok(user); // Return the user data
+        }
+
+        // PUT: api/User/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] User updatedUser)
+        {
+            if (id != updatedUser.Id)
+            {
+                return BadRequest("User ID mismatch");
+            }
+
+            var result = await _userService.UpdateUserAsync(id, updatedUser);
+
+            if (!result)
+            {
+                return NotFound("User not found");
+            }
+
+            return NoContent(); // No content means successful update without response body
         }
     }
 }

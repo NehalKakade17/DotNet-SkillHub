@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5217";
+const BASE_URL = "https://localhost:44338";
 
 // Function to fetch projects from the backend API
 const fetchProjects = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/project/getAll`, {
+        const response = await axios.get(`https://localhost:44338/api/User/login`, {
             withCredentials: true,
         });
         return response.data; // Return the fetched data
@@ -42,7 +42,7 @@ const fetchUsers = async () => {
 
 export const postUserDetails = async (formData) => {
     try {
-        const response = await axios.post("https://localhost:44338/api/User", formData, {
+        const response = await axios.post(`${BASE_URL}/api/User`, formData, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -57,20 +57,29 @@ export const postUserDetails = async (formData) => {
 
 const loginUser = async (credentials) => {
     try {
+        // Sending POST request to the backend login API
         const response = await axios.post(
-            `https://localhost:44338/api/User/login`,
-            credentials,
+            `${BASE_URL}/api/User/login`, // URL for the backend login endpoint
+            credentials, // The login credentials (email & password)
             {
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 withCredentials: true,
             }
         );
-        return response.data; // Return the response data (e.g., user details or success message)
+
+        // If login is successful, return the response data (e.g., user details)
+        return response.data;
     } catch (error) {
-        // Extract error message from response or default to a generic message
-        const errorMessage =
-            error.response?.data?.message || "Invalid credentials";
+        // Handle errors from the request
+        // If the error has a response (meaning the server responded with an error)
+        const errorMessage = error.response?.data?.message || "Invalid credentials";
+        console.error(errorMessage);
+        // Throw a new error with the extracted message
         throw new Error(errorMessage);
     }
 };
+
 
 export { fetchProjects, createProject, fetchUsers, loginUser };

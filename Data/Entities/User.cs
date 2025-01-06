@@ -1,16 +1,25 @@
-﻿namespace SkillHub.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace SkillHub.Data.Entities
 {
     public class User
     {
         public int Id { get; set; }
 
         // First Name of the user
+       
         public string FirstName { get; set; }
 
         // Last Name of the user
+        
         public string LastName { get; set; }
 
         // Email (unique)
+        
+        
+        
         public string Email { get; set; }
 
         // Password
@@ -30,5 +39,6 @@
 
         // Rate (optional)
         public decimal? Rate { get; set; }
+        public Role Role { get; set; }
     }
 }

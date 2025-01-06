@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../utils/fetchProjects"; // Utility function for login
+import PropTypes from "prop-types";
 
 const Login = ({ onLogin }) => {
     const [formData, setFormData] = useState({
@@ -41,20 +42,75 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate the form before proceeding
         if (validateForm()) {
             try {
+                // Send the login credentials and receive the response from the backend
                 const response = await loginUser(formData); // Post to backend
+
+                // Log the response to check the structure
+                console.log("Login Response:", response);
+
+                // Check if response is valid and contains necessary data
+                if (!response || !response.userId || !response.role) {
+                    throw new Error("No valid data received from server.");
+                }
+
+                // Destructure the user information from the response
+                const { role, userId, email, firstName, lastName } = response;
+
+                // Show success message
                 setMessage("Login successful!");
-                console.log(response.data);
-                onLogin(); // Trigger onLogin callback
+
+                // Trigger onLogin callback to handle login state
+                onLogin(role);
+
+                // Store user info in local storage (or any state management)
+                localStorage.setItem("userId", userId);
+                localStorage.setItem("email", email);
+                localStorage.setItem("role", role);
+                localStorage.setItem("firstName", firstName);
+                localStorage.setItem("lastName", lastName);
+
+                // Redirect based on role after a short delay for better user experience
                 setTimeout(() => {
-                    navigate("/"); // Redirect to home
-                }, 2000);
+                    if (role === "Admin") {
+                        navigate("/Dashboard"); // Admin dashboard redirect
+                    } else {
+                        navigate("/"); // Redirect to home for regular users
+                    }
+                }, 2000); // Optional delay for success message
             } catch (error) {
-                setMessage(error.message);
+                // Handle different error scenarios
+                console.error("Error during login:", error); // Log the error for debugging purposes
+
+                // Check if error has a response (server-side issue)
+                if (error.response) {
+                    // Show server-side error message (e.g., invalid credentials)
+                    setMessage(error.response.data.message || "An error occurred during login.");
+                }
+                // Check if error is due to request (e.g., network issues)
+                else if (error.request) {
+                    setMessage("Network error. Please try again later.");
+                }
+                // Handle unexpected errors (e.g., form validation errors)
+                else {
+                    setMessage("An unexpected error occurred. Please try again.");
+                }
             }
+        } else {
+            // Display message if validation fails
+            setMessage("Please fill in all required fields.");
         }
     };
+
+
+
+
+
+        
+
 
     return (
         <Container
@@ -119,7 +175,7 @@ const Login = ({ onLogin }) => {
                 <Row className="mt-4">
                     <Col className="text-center">
                         <span>
-                            Don't have an account?{" "}
+                            Do not have an account?{" "}
                             <Link to="/signup">Sign Up</Link>
                         </span>
                     </Col>
@@ -131,5 +187,8 @@ const Login = ({ onLogin }) => {
         </Container>
     );
 };
-
+Login.propTypes = {
+    onLogin: PropTypes.func.isRequired, // onLogin is required and should be a function
+};
 export default Login;
+
