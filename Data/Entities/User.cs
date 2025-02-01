@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Text.Json.Serialization;
+
+
 
 namespace SkillHub.Data.Entities
 {
@@ -40,5 +41,12 @@ namespace SkillHub.Data.Entities
         // Rate (optional)
         public decimal? Rate { get; set; }
         public Role Role { get; set; }
+        [JsonIgnore]
+        public string Otp { get; set; }
+        [JsonIgnore]
+        public DateTime? OtpExpiration { get; set; }
+
+        public bool IsVerified { get; set; }
+
     }
 }

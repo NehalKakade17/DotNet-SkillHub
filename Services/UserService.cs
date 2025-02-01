@@ -27,6 +27,13 @@ namespace SkillHub.Services
             // Return the created user (with generated ID)
             return user;
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            // Look for a user with the provided email in the database
+            return await _userDbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
         public async Task<User> LoginUserAsync(LoginReq loginReq)
         {
             // Find the user by email
@@ -92,6 +99,23 @@ namespace SkillHub.Services
             await _userDbContext.SaveChangesAsync();
 
             return true; // Successfully updated
+        }
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            var existingUser = await _userDbContext.Users
+                .Where(u => u.Email == user.Email)
+                .FirstOrDefaultAsync();
+
+            if (existingUser == null)
+            {
+                return false; // User not found
+            }
+
+            existingUser.Otp = user.Otp;
+            existingUser.OtpExpiration = user.OtpExpiration;
+            _userDbContext.Users.Update(existingUser);
+            await _userDbContext.SaveChangesAsync();
+            return true;
         }
     }
 }
