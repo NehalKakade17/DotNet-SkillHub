@@ -140,3 +140,5 @@ D:\Dotnet\SkillHub\obj\Debug\net8.0\SkillHub.pdb
 D:\Dotnet\SkillHub\obj\Debug\net8.0\SkillHub.genruntimeconfig.cache
 D:\Dotnet\SkillHub\obj\Debug\net8.0\ref\SkillHub.dll
 D:\Dotnet\SkillHub\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Dotnet\SkillHub\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Dotnet\SkillHub\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll

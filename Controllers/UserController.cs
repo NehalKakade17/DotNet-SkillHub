@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkillHub.Data.Entities;
+using SkillHub.Services.Interface;
 using SkillHub.Services;
+using SkillHub.DTO;
 
 
 namespace SkillHub.Controllers
@@ -11,10 +13,20 @@ namespace SkillHub.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserServiceAuth _userServiceAuth;
+        private readonly IOtpService _otpService;
         private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
             this._userService = userService;
+        }
+        public UserController(IUserServiceAuth userServiceAuth)
+        {
+            this._userServiceAuth = userServiceAuth;
+        }
+        public UserController(IOtpService otpService)
+        {
+            this._otpService = otpService;
         }
 
         /*[HttpGet("all")]
@@ -127,6 +139,26 @@ namespace SkillHub.Controllers
             }
 
             return NoContent(); // No content means successful update without response body
+        }
+
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> ValidateAsync(AuthenticateRequest model)
+        {
+            var response = _userServiceAuth.Authenticate(model);
+            if (response == null)
+            {
+                return BadRequest(new { message = "Invalid email or password." });
+            }
+            try
+            {
+
+                var otpCode = await _otpService.GenerateOtpAsync(response.Email, response.Role);
+                return Ok(new { message = "Authentication successful. OTP has been sent to your email.", otpCode });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error sending OTP: " + ex.Message });
+            }
         }
     }
 }

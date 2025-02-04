@@ -9,6 +9,6 @@ namespace SkillHub.Data
         }
          // Register the DbSet for Users
         public DbSet<User> Users { get; set; }
-       
+       public DbSet<Otp> Otps { get; set; }
     }
 }
